@@ -7,5 +7,8 @@ Includes a contact form, a protected API endpoint with token.
 Made as a practice project for learning web app pentesting
 
 
-curl -H "Authorization: Bearer token123" http://localhost:5000/messages
-curl -H "Authorization: Bearer token123" http://localhost:5000/messages | jq
+#curl -H "Authorization: Bearer token123" http://localhost:5000/messages
+
+
+
+#curl -H "Authorization: Bearer token123" http://localhost:5000/messages | jq
