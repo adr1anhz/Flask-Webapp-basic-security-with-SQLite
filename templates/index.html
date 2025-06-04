@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt</title>
+</head>
+<body>
+  <h2>Formularz kontaktowy</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Twoje imię" required><br>
+    <input type="email" id="email" placeholder="Twój email" required><br>
+    <textarea id="message" placeholder="Wiadomość" required></textarea><br>
+    <button type="submit">Wyślij</button>
+  </form>
+
+  <p id="response"></p>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const response = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          message: document.getElementById("message").value,
+        }),
+      });
+      const result = await response.json();
+      document.getElementById("response").innerText = result.message;
+    });
+  </script>
+</body>
+</html>
